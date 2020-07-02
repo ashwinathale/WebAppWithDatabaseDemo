@@ -189,36 +189,6 @@ stages:
     - task: TerraformInstaller@0
       displayName: 'Install Terraform 0.12.3'
 
-    - task: Terraform@2
-      inputs:
-        TemplatePath: '$(System.DefaultWorkingDirectory)/terraform/'
-        Arguments: 'init'
-        InstallTerraform: true
-        UseAzureSub: true
-        ConnectedServiceNameSelector: 'ConnectedServiceNameARM'
-        ConnectedServiceNameARM: 'Microsoft Azure Sponsorship (4a80b6cd-158f-4bf0-bceb-0eb3fab4e5e6)'
-        ManageState: false
-
-    - task: Terraform@2
-      inputs:
-        TemplatePath: '$(System.DefaultWorkingDirectory)/terraform/'
-        Arguments: 'plan'
-        InstallTerraform: true
-        UseAzureSub: true
-        ConnectedServiceNameSelector: 'ConnectedServiceNameARM'
-        ConnectedServiceNameARM: 'Microsoft Azure Sponsorship (4a80b6cd-158f-4bf0-bceb-0eb3fab4e5e6)'
-        ManageState: false
-
-    - task: Terraform@2
-      inputs:
-        TemplatePath: '$(System.DefaultWorkingDirectory)/terraform/'
-        Arguments: 'apply'
-        InstallTerraform: true
-        UseAzureSub: true
-        ConnectedServiceNameSelector: 'ConnectedServiceNameARM'
-        ConnectedServiceNameARM: 'Microsoft Azure Sponsorship (4a80b6cd-158f-4bf0-bceb-0eb3fab4e5e6)'
-        ManageState: false
-
     - task: AzureResourceGroupDeployment@2
       displayName: Validate ARM template
       enabled: 'false'
