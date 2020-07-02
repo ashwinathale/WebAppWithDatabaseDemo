@@ -168,9 +168,9 @@ stages:
     variables:
       Parameters.ConnectedServiceName: 'Microsoft Azure Sponsorship (4a80b6cd-158f-4bf0-bceb-0eb3fab4e5e6)' # couldn't be referenced
       ResourceGroupName: '$(Prefix)-$(Release.EnvironmentName)-$(UniqueId)-RG'
-      Database.Admin: 'houssem'
-      Database.Password: '@Aa123456'
-      Database.Name: 'EmployeesDB'
+      Database.Admin: 'dbadmin'
+      Database.Password: 'DBAdm1n01'
+      Database.Name: 'mytestdb'
       WebAppName: '$(Prefix)-$(Release.EnvironmentName)-$(UniqueId)'
       WebAppNameUrl: 'https://$(WebAppName).azurewebsites.net/'
       SqlServerName: '$(Prefix)-sql-$(Release.EnvironmentName)-$(UniqueId)'
