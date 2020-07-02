@@ -186,6 +186,9 @@ stages:
         artifactName: terraform
         downloadPath: $(System.DefaultWorkingDirectory)
 
+    - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
+      displayName: 'Install Terraform 0.12.3'
+
     - task: Terraform@2
       inputs:
         TemplatePath: '$(System.DefaultWorkingDirectory)/terraform/'
