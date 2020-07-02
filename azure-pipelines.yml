@@ -166,7 +166,7 @@ stages:
       name: Hosted Windows 2019 with VS2019 
       vmImage: 'windows-2019'
     variables:
-      Parameters.ConnectedServiceName: 'Microsoft Azure Sponsorship (5a56fb34-f1c5-4669-9412-4592bb81a2cf)' # couldn't be referenced
+      Parameters.ConnectedServiceName: 'Microsoft Azure Sponsorship (4a80b6cd-158f-4bf0-bceb-0eb3fab4e5e6)' # couldn't be referenced
       ResourceGroupName: '$(Prefix)-$(Release.EnvironmentName)-$(UniqueId)-RG'
       Database.Admin: 'houssem'
       Database.Password: '@Aa123456'
@@ -193,7 +193,7 @@ stages:
         InstallTerraform: true
         UseAzureSub: true
         ConnectedServiceNameSelector: 'ConnectedServiceNameARM'
-        ConnectedServiceNameARM: 'Microsoft Azure Sponsorship (5a56fb34-f1c5-4669-9412-4592bb81a2cf)'
+        ConnectedServiceNameARM: 'Microsoft Azure Sponsorship (4a80b6cd-158f-4bf0-bceb-0eb3fab4e5e6)'
         ManageState: false
 
     - task: Terraform@2
@@ -203,7 +203,7 @@ stages:
         InstallTerraform: true
         UseAzureSub: true
         ConnectedServiceNameSelector: 'ConnectedServiceNameARM'
-        ConnectedServiceNameARM: 'Microsoft Azure Sponsorship (5a56fb34-f1c5-4669-9412-4592bb81a2cf)'
+        ConnectedServiceNameARM: 'Microsoft Azure Sponsorship (4a80b6cd-158f-4bf0-bceb-0eb3fab4e5e6)'
         ManageState: false
 
     - task: Terraform@2
@@ -213,14 +213,14 @@ stages:
         InstallTerraform: true
         UseAzureSub: true
         ConnectedServiceNameSelector: 'ConnectedServiceNameARM'
-        ConnectedServiceNameARM: 'Microsoft Azure Sponsorship (5a56fb34-f1c5-4669-9412-4592bb81a2cf)'
+        ConnectedServiceNameARM: 'Microsoft Azure Sponsorship (4a80b6cd-158f-4bf0-bceb-0eb3fab4e5e6)'
         ManageState: false
 
     - task: AzureResourceGroupDeployment@2
       displayName: Validate ARM template
       enabled: 'false'
       inputs:
-        azureSubscription: 'Microsoft Azure Sponsorship (5a56fb34-f1c5-4669-9412-4592bb81a2cf)'
+        azureSubscription: 'Microsoft Azure Sponsorship (4a80b6cd-158f-4bf0-bceb-0eb3fab4e5e6)'
         action: 'Create Or Update Resource Group'
         resourceGroupName: '$(ResourceGroupName)'
         location: 'West Europe'
@@ -234,7 +234,7 @@ stages:
       displayName: Create Or Update Resource Group
       enabled: 'false'
       inputs:
-        azureSubscription: 'Microsoft Azure Sponsorship (5a56fb34-f1c5-4669-9412-4592bb81a2cf)'
+        azureSubscription: 'Microsoft Azure Sponsorship (4a80b6cd-158f-4bf0-bceb-0eb3fab4e5e6)'
         action: 'Create Or Update Resource Group'
         resourceGroupName: '$(ResourceGroupName)'
         location: 'West Europe'
@@ -261,7 +261,7 @@ stages:
       displayName: Deploy Web App to Azure App Service
       enabled: 'true'
       inputs:
-        azureSubscription: 'Microsoft Azure Sponsorship (5a56fb34-f1c5-4669-9412-4592bb81a2cf)'
+        azureSubscription: 'Microsoft Azure Sponsorship (4a80b6cd-158f-4bf0-bceb-0eb3fab4e5e6)'
         appType: 'webApp'
         WebAppName: '$(WebAppName)'
         TakeAppOfflineFlag: true
@@ -282,7 +282,7 @@ stages:
     - task: SqlAzureDacpacDeployment@1
       displayName: Azure SQL Publish DacPac to SQL Azure
       inputs:
-        azureSubscription: 'Microsoft Azure Sponsorship (5a56fb34-f1c5-4669-9412-4592bb81a2cf)'
+        azureSubscription: 'Microsoft Azure Sponsorship (4a80b6cd-158f-4bf0-bceb-0eb3fab4e5e6)'
         ServerName: '$(SqlServerName).database.windows.net,1433'
         DatabaseName: '$(Database.Name)'
         SqlUsername: '$(Database.Admin)'
