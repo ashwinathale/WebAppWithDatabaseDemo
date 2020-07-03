@@ -41,4 +41,4 @@ steps:
     SqlUsername: dbadmin 
     SqlPassword: DBAdm1n01 
     deployType: DacpacTask
-    DacpacFile: '$(Build.ArtifactStagingDirectory)/**/dacpac'
+    DacpacFile: '$(System.DefaultWorkingDirectory)/dacpac/WebApp.Database.dacpac'
