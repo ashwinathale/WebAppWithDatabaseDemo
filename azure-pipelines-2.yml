@@ -43,8 +43,9 @@ steps:
   displayName: Azure SQL deployment 
   inputs:
     #azureConnectionType: ConnectedServiceNameARM
-    azureSubscription: 'Free Trial(4a80b6cd-158f-4bf0-bceb-0eb3fab4e5e6)'
-    #AuthenticationType: s
+    azureSubscription: 'Free Trial (4a80b6cd-158f-4bf0-bceb-0eb3fab4e5e6)'
+    AuthenticationType: server
+    ServerName: 'mytestdbserver0101.database.windows.net,1433'
     DatabaseName: mytestdb 
     SqlUsername: dbadmin 
     SqlPassword: DBAdm1n01 
