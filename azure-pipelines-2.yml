@@ -34,8 +34,8 @@ steps:
 - task: SqlAzureDacpacDeployment@1
   displayName: Azure SQL deployment 
   inputs:
-    azureConnectionType: ConnectedServiceName
-    azureSubscription: 4a80b6cd-158f-4bf0-bceb-0eb3fab4e5e6 
+    azureConnectionType: ConnectedServiceNameARM
+    azureSubscription: 'Free Trial(4a80b6cd-158f-4bf0-bceb-0eb3fab4e5e6)'' 
     AuthenticationType: server
     DatabaseName: mytestdb 
     SqlUsername: dbadmin 
