@@ -31,14 +31,22 @@ steps:
   inputs:
    ArtifactName: dacpac
 
+- task: DownloadBuildArtifacts@0    
+  displayName: Download DacPac
+  inputs:
+    buildType: 'current'
+    downloadType: 'single'
+    artifactName: 'dacpac'
+    itemPattern: '**/*.dacpac'
+    downloadPath: '$(System.DefaultWorkingDirectory)'
 - task: SqlAzureDacpacDeployment@1
   displayName: Azure SQL deployment 
   inputs:
     #azureConnectionType: ConnectedServiceNameARM
-    azureSubscription: 'Free Trial(4a80b6cd-158f-4bf0-bceb-0eb3fab4e5e6)'' 
+    azureSubscription: 'Free Trial(4a80b6cd-158f-4bf0-bceb-0eb3fab4e5e6)'
     #AuthenticationType: s
     DatabaseName: mytestdb 
     SqlUsername: dbadmin 
     SqlPassword: DBAdm1n01 
     deployType: DacpacTask
-    DacpacFile: '$(Build.ArtifactStagingDirectory)/dacpac'
+    DacpacFile: '$(System.DefaultWorkingDirectory)/dacpac/WebApp.Database.dacpac'
