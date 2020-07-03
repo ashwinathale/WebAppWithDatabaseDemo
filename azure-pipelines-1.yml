@@ -42,14 +42,13 @@ steps:
 - task: PublishBuildArtifacts@1
   condition: succeeded()
 
-#- task: VSBuild@1
-#  inputs:
-#    solution: '$(solution)'
-#    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
-#    platform: '$(buildPlatform)'
-#    configuration: '$(buildConfiguration)'
+- task: MSBuild@1
+  displayName: Build solution WebApp.Database.sqlproj
+  inputs:
+    solution: WebApp.Database/WebApp.Database.sqlproj
+    msbuildArguments: '/p:OutDir=$(Build.ArtifactStagingDirectory)'
 
-#- task: VSTest@2
-#  inputs:
-#    platform: '$(buildPlatform)'
-#    configuration: '$(buildConfiguration)'
+- task: PublishBuildArtifacts@1
+  displayName: Publish Dacpac
+  inputs:
+    ArtifactName: dacpac
