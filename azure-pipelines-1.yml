@@ -28,8 +28,8 @@ steps:
 - task: SonarCloudPrepare@1
   displayName: Prepare SonarCloud Analysis config
   inputs:
-    SonarCloud: SonarCloud
-    projectKey: MyAzureSubscription  
+    SonarCloud: MyAzureSubscription
+    #projectKey: MyAzureSubscription  
 - task: DotNetCoreCLI@2
   inputs:
     command: build
