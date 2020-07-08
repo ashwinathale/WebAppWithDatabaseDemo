@@ -24,13 +24,29 @@ steps:
   inputs:
    command: restore
    projects: 'WebApp/*.csproj'
-    
+
+- task: SonarCloudPrepare@1
+  displayName: Prepare SonarCloud Analysis config
+  inputs:
+    SonarCloud: SonarCloud
+    projectKey: WebAppWithDatabaseDemo    
 - task: DotNetCoreCLI@2
   inputs:
     command: build
     arguments: '--no-restore --configuration $(buildConfiguration)'
     projects: 'WebApp/*.csproj'
 
+- task: DotNetCoreCLI@2
+  inputs:
+    command: test
+    projects: 'WebApp.UnitTest/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
+
+- task: SonarCloudAnalyze@1
+  displayName: Run SonarCloud analysis
+
+- task: SonarCloudPublish@1
+  displayName: Publish SonarCloud QualityGate result  
 - task: DotNetCoreCLI@2
   inputs:
     command: publish
@@ -41,14 +57,3 @@ steps:
 
 - task: PublishBuildArtifacts@1
   condition: succeeded()
-
-- task: MSBuild@1
-  displayName: Build solution WebApp.Database.sqlproj
-  inputs:
-    solution: WebApp.Database/WebApp.Database.sqlproj
-    msbuildArguments: '/p:OutDir=$(Build.ArtifactStagingDirectory)'
-
-- task: PublishBuildArtifacts@1
-  displayName: Publish Dacpac
-  inputs:
-    ArtifactName: dacpac
